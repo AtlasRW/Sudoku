@@ -1,9 +1,9 @@
 {
+    "dotnet.defaultSolution": "Sudoku.sln",
     "files.exclude": {
         "**/.DS_Store": true,
         "**/.git": true,
         "**/.vs": true,
-        "**/.gitignore": false,
         "**/.gitmodules": true,
         "**/.vsconfig": true,
         "**/*.booproj": true,
@@ -12,6 +12,7 @@
         "**/*.user": true,
         "**/*.userprefs": true,
         "**/*.unityproj": true,
+        // "**/*.csp*": true,
         "**/*.dll": true,
         "**/*.exe": true,
         "**/*.pdf": true,
@@ -65,5 +66,4 @@
         "temp/": true,
         "Temp/": true
     },
-    "dotnet.defaultSolution": "Sudoku.sln"
 }
