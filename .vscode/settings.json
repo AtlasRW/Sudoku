@@ -12,7 +12,7 @@
         "**/*.user": true,
         "**/*.userprefs": true,
         "**/*.unityproj": true,
-        // "**/*.csp*": true,
+        "**/*.cspr*": true,
         "**/*.dll": true,
         "**/*.exe": true,
         "**/*.pdf": true,
