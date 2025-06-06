@@ -35,6 +35,7 @@ public readonly struct Row
     public readonly override int GetHashCode() => value.GetHashCode();
     public readonly override bool Equals(object obj) => obj is Row row && value == row.value;
 
+    public readonly int ToInt() => value;
     public readonly override string ToString() =>
         value switch
         {
@@ -49,6 +50,5 @@ public readonly struct Row
             9 => "I",
             _ => null
         };
-
     public readonly string ToClassName() => $"row{ToString()}";
 }

@@ -35,7 +35,6 @@ public readonly struct Number
     public readonly override int GetHashCode() => value.GetHashCode();
     public readonly override bool Equals(object obj) => obj is Number num && value == num.value;
 
-    public readonly override string ToString() => value.ToString();
-
     public readonly int ToInt() => value;
+    public readonly override string ToString() => value.ToString();
 }

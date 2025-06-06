@@ -35,7 +35,7 @@ public readonly struct Column
     public readonly override int GetHashCode() => value.GetHashCode();
     public readonly override bool Equals(object obj) => obj is Column col && value == col.value;
 
+    public readonly int ToInt() => value;
     public readonly override string ToString() => value.ToString();
-
     public readonly string ToClassName() => $"col{ToString()}";
 }
