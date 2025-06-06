@@ -1,0 +1,231 @@
+.row {
+    flex-direction: row;
+    justify-content: center;
+    padding-top: 0;
+    padding-right: 0;
+    padding-bottom: 0;
+    padding-left: 0;
+    margin-top: 0;
+    margin-right: 0;
+    margin-bottom: 0;
+    margin-left: 0;
+    align-self: center;
+    align-content: center;
+    width: 99.99%;
+    height: 33%;
+}
+
+.box {
+    flex-direction: column;
+    padding-top: 0;
+    padding-right: 0;
+    padding-bottom: 0;
+    padding-left: 0;
+    margin-top: 0;
+    margin-right: 0;
+    margin-bottom: 0;
+    margin-left: 0;
+    border-top-width: 2px;
+    border-right-width: 2px;
+    border-bottom-width: 2px;
+    border-left-width: 2px;
+    border-left-color: rgb(0, 0, 0);
+    border-right-color: rgb(0, 0, 0);
+    border-top-color: rgb(0, 0, 0);
+    border-bottom-color: rgb(0, 0, 0);
+    width: 33%;
+}
+
+.boxline {
+    justify-content: space-evenly;
+    align-self: auto;
+    align-content: auto;
+    flex-direction: row;
+    align-items: auto;
+    margin-top: 0;
+    margin-right: 0;
+    margin-bottom: 0;
+    margin-left: 0;
+    padding-top: 0;
+    padding-right: 0;
+    padding-bottom: 0;
+    padding-left: 0;
+}
+
+.case {
+    margin-top: 0;
+    margin-right: 0;
+    margin-bottom: 0;
+    margin-left: 0;
+    padding-top: 10px;
+    padding-right: 18px;
+    padding-bottom: 10px;
+    padding-left: 18px;
+    -unity-text-align: middle-center;
+    -unity-font-definition: url("project://database/Assets/Interfaces/UnityThemes/UnityDefaultRuntimeTheme.tss?fileID=2230732570650464555&guid=2522aac0bb3c94f818c55343f0feef50&type=3#NotInter-Regular");
+    -unity-font-style: normal;
+    font-size: 400%;
+    align-self: center;
+    align-content: center;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(243, 243, 235);
+    height: 100%;
+    width: 33%;
+    overflow: visible;
+    display: flex;
+    visibility: visible;
+    color: rgba(27, 27, 27, 0);
+}
+
+.case.prefilled {
+    color: rgb(0, 0, 0);
+}
+
+.case.filled {
+    color: rgb(7, 46, 159);
+}
+
+.case.error {
+    color: rgb(159, 7, 7);
+}
+
+.case.aligned {
+    background-color: rgb(197, 219, 233);
+}
+
+.case.matched {
+    background-color: rgb(178, 215, 241);
+}
+
+.case.focus {
+    background-color: rgb(155, 214, 255);
+}
+
+.button {
+    margin-top: 0;
+    margin-right: 0;
+    margin-bottom: 0;
+    margin-left: 0;
+    padding-top: 0;
+    padding-right: 0;
+    padding-bottom: 0;
+    padding-left: 0;
+    justify-content: center;
+    align-self: center;
+    align-content: center;
+    align-items: center;
+    width: 25%;
+    height: 100%;
+    flex-direction: column;
+}
+
+.button VisualElement {
+    flex-grow: 1;
+    margin-top: 0;
+    margin-right: 0;
+    margin-bottom: 0;
+    margin-left: 0;
+    padding-top: 0;
+    padding-right: 0;
+    padding-bottom: 0;
+    padding-left: 0;
+}
+
+.button Label {
+    font-size: 20px;
+    -unity-font-style: bold;
+    -unity-text-align: middle-center;
+    letter-spacing: 5px;
+    margin-top: 10px;
+    margin-right: 0;
+    margin-bottom: 0;
+    margin-left: 0;
+    padding-top: 0;
+    padding-right: 0;
+    padding-bottom: 0;
+    padding-left: 0;
+}
+
+.number {
+    margin-top: 4px;
+    margin-right: 4px;
+    margin-bottom: 4px;
+    margin-left: 4px;
+    padding-top: 10px;
+    padding-right: 14px;
+    padding-bottom: 10px;
+    padding-left: 14px;
+    -unity-text-align: middle-center;
+    -unity-font-definition: url("project://database/Assets/Medias/Fonts/Unity.ttf?fileID=12800000&guid=f4eec857a4fdf2f43be0e9f3d1a984e7&type=3#Unity");
+    -unity-font-style: normal;
+    font-size: 75px;
+    align-self: center;
+    align-content: center;
+    justify-content: center;
+    align-items: center;
+    border-left-color: rgba(0, 0, 0, 0);
+    border-right-color: rgba(0, 0, 0, 0);
+    border-top-color: rgba(0, 0, 0, 0);
+    border-bottom-color: rgba(0, 0, 0, 0);
+    color: rgb(0, 51, 159);
+    background-color: rgba(0, 0, 0, 0);
+}
+
+.number.hidden {
+    visibility: hidden;
+}
+
+.col1 {
+}
+
+.col2 {
+}
+
+.col3 {
+}
+
+.col4 {
+}
+
+.col5 {
+}
+
+.col6 {
+}
+
+.col7 {
+}
+
+.col8 {
+}
+
+.col9 {
+}
+
+.rowA {
+}
+
+.rowB {
+}
+
+.rowC {
+}
+
+.rowD {
+}
+
+.rowE {
+}
+
+.rowF {
+}
+
+.rowG {
+}
+
+.rowH {
+}
+
+.rowI {
+}

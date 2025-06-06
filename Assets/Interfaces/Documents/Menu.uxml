@@ -1,0 +1,6 @@
+<engine:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:engine="UnityEngine.UIElements" xmlns:editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/Interfaces/Stylesheets/Menu.uss?fileID=7433441132597879392&amp;guid=a4cd14a975d484a60bb1fdba5bc7dc10&amp;type=3#Menu" />
+    <engine:VisualElement style="flex-grow: 1; background-color: rgb(0, 0, 0); justify-content: center; align-items: center; align-self: auto; align-content: auto;">
+        <engine:Button text="Play" name="Play" style="justify-content: center; align-self: auto; align-content: auto; align-items: auto; width: 80%; height: 10%; font-size: 36px;" />
+    </engine:VisualElement>
+</engine:UXML>

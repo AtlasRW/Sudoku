@@ -1,0 +1,204 @@
+<engine:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:engine="UnityEngine.UIElements" xmlns:editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/Interfaces/Stylesheets/Game.uss?fileID=7433441132597879392&amp;guid=0faf5b0ba41564f09b72253b1ea39fce&amp;type=3#Game" />
+    <engine:VisualElement name="Layout" style="flex-grow: 1; background-color: rgb(243, 243, 235);">
+        <engine:VisualElement name="Header" style="flex-grow: 1; align-items: center; justify-content: space-evenly; align-self: auto; align-content: center; height: 15%; max-height: 15%; min-height: 15%; flex-direction: row;">
+            <engine:Button text="Back" name="Back" />
+            <engine:Label text="SUDOKU" name="Title" data-source-type="Cell, _" style="color: rgb(0, 0, 0); -unity-font-style: bold; font-size: 80%; -unity-font-definition: url(&quot;project://database/Assets/Interfaces/UnityThemes/UnityDefaultRuntimeTheme.tss?fileID=2230732570650464555&amp;guid=2522aac0bb3c94f818c55343f0feef50&amp;type=3#NotInter-Regular&quot;); -unity-text-align: middle-center; margin-top: 0; margin-right: 0; margin-bottom: 0; margin-left: 0; padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 0;" />
+            <engine:Button text="Refresh" name="Refresh" />
+        </engine:VisualElement>
+        <engine:VisualElement name="Body" style="align-items: center; justify-content: center; align-content: auto; max-height: 60%; height: 60%; min-height: 60%;">
+            <engine:VisualElement name="Grid" style="flex-grow: 1; justify-content: center; align-items: center; align-self: center; align-content: center; height: 95%; min-height: 95%; max-height: 95%; width: 95%; max-width: 95%; min-width: 95%; background-color: rgb(0, 0, 0);">
+                <engine:GroupBox name="Row1" focusable="true" class="row">
+                    <engine:GroupBox name="Box1" class="box">
+                        <engine:GroupBox name="RowA-123" class="row">
+                            <engine:Button text="0" name="A1" selectable="true" class="case rowA col1" />
+                            <engine:Button text="0" name="A2" selectable="true" class="case rowA col2" />
+                            <engine:Button name="A3" selectable="true" text="0" class="case rowA col3" />
+                        </engine:GroupBox>
+                        <engine:GroupBox name="RowB-123" class="row">
+                            <engine:Button text="0" name="B1" selectable="true" class="case rowB col1" />
+                            <engine:Button text="0" name="B2" selectable="true" class="case rowB col2" />
+                            <engine:Button text="0" name="B3" selectable="true" class="case rowB col3" />
+                        </engine:GroupBox>
+                        <engine:GroupBox name="RowC-123" class="row">
+                            <engine:Button text="0" name="C1" selectable="true" class="case rowC col1" />
+                            <engine:Button text="0" name="C2" enable-rich-text="true" selectable="true" class="case rowC col2" />
+                            <engine:Button text="0" name="C3" selectable="true" class="case rowC col3" />
+                        </engine:GroupBox>
+                    </engine:GroupBox>
+                    <engine:GroupBox name="Box2" class="box">
+                        <engine:GroupBox name="RowA-456" class="row">
+                            <engine:Button text="0" name="A4" selectable="true" class="case rowA col4" />
+                            <engine:Button text="0" name="A5" selectable="true" class="case rowA col5" />
+                            <engine:Button text="0" name="A6" selectable="true" class="case rowA col6" />
+                        </engine:GroupBox>
+                        <engine:GroupBox name="RowB-456" class="row">
+                            <engine:Button text="0" name="B4" selectable="true" class="case rowB col4" />
+                            <engine:Button text="0" name="B5" selectable="true" class="case rowB col5" />
+                            <engine:Button text="0" name="B6" selectable="true" class="case rowB col6" />
+                        </engine:GroupBox>
+                        <engine:GroupBox name="RowC-456" class="row">
+                            <engine:Button text="0" name="C4" selectable="true" class="case rowC col4" />
+                            <engine:Button text="0" name="C5" enable-rich-text="true" selectable="true" class="case rowC col5" />
+                            <engine:Button text="0" name="C6" selectable="true" class="case rowC col6" />
+                        </engine:GroupBox>
+                    </engine:GroupBox>
+                    <engine:GroupBox name="Box3" class="box">
+                        <engine:GroupBox name="RowA-789" class="row">
+                            <engine:Button text="0" name="A7" selectable="true" class="case rowA col7" />
+                            <engine:Button text="0" name="A8" selectable="true" class="case rowA col8" />
+                            <engine:Button text="0" name="A9" selectable="true" class="case rowA col9" />
+                        </engine:GroupBox>
+                        <engine:GroupBox name="RowB-789" class="row">
+                            <engine:Button text="0" name="B7" selectable="true" class="case rowB col7" />
+                            <engine:Button text="0" name="B8" selectable="true" class="case rowB col8" />
+                            <engine:Button text="0" name="B9" selectable="true" class="case rowB col9" />
+                        </engine:GroupBox>
+                        <engine:GroupBox name="RowC-789" class="row">
+                            <engine:Button text="0" name="C7" selectable="true" class="case rowC col7" />
+                            <engine:Button text="0" name="C8" enable-rich-text="true" selectable="true" class="case rowC col8" />
+                            <engine:Button text="0" name="C9" selectable="true" class="case rowC col9" />
+                        </engine:GroupBox>
+                    </engine:GroupBox>
+                </engine:GroupBox>
+                <engine:GroupBox name="Row2" focusable="true" class="row">
+                    <engine:GroupBox name="Box4" class="box">
+                        <engine:GroupBox name="RowD-123" class="row">
+                            <engine:Button text="0" name="D1" selectable="true" class="case rowD col1" />
+                            <engine:Button text="0" name="D2" selectable="true" class="case rowD col2" />
+                            <engine:Button text="0" name="D3" selectable="true" class="case rowD col3" />
+                        </engine:GroupBox>
+                        <engine:GroupBox name="RowE-123" class="row">
+                            <engine:Button text="0" name="E1" selectable="true" class="case rowE col1" />
+                            <engine:Button text="0" name="E2" selectable="true" class="case rowE col2" />
+                            <engine:Button text="0" name="E3" selectable="true" class="case rowE col3" />
+                        </engine:GroupBox>
+                        <engine:GroupBox name="RowF-123" class="row">
+                            <engine:Button text="0" name="F1" selectable="true" class="case rowF col1" />
+                            <engine:Button text="0" name="F2" enable-rich-text="true" selectable="true" class="case rowF col2" />
+                            <engine:Button text="0" name="F3" selectable="true" class="case rowF col3" />
+                        </engine:GroupBox>
+                    </engine:GroupBox>
+                    <engine:GroupBox name="Box5" class="box">
+                        <engine:GroupBox name="RowD-456" class="row">
+                            <engine:Button text="0" name="D4" selectable="true" class="case rowD col4" />
+                            <engine:Button text="0" name="D5" selectable="true" class="case rowD col5" />
+                            <engine:Button text="0" name="D6" selectable="true" class="case rowD col6" />
+                        </engine:GroupBox>
+                        <engine:GroupBox name="RowE-456" class="row">
+                            <engine:Button text="0" name="E4" selectable="true" class="case rowE col4" />
+                            <engine:Button text="0" name="E5" selectable="true" class="case rowE col5" />
+                            <engine:Button text="0" name="E6" selectable="true" class="case rowE col6" />
+                        </engine:GroupBox>
+                        <engine:GroupBox name="RowF-456" class="row">
+                            <engine:Button text="0" name="F4" selectable="true" class="case rowF col4" />
+                            <engine:Button text="0" name="F5" enable-rich-text="true" selectable="true" class="case rowF col5" />
+                            <engine:Button text="0" name="F6" selectable="true" class="case rowF col6" />
+                        </engine:GroupBox>
+                    </engine:GroupBox>
+                    <engine:GroupBox name="Box6" class="box">
+                        <engine:GroupBox name="RowD-789" class="row">
+                            <engine:Button text="0" name="D7" selectable="true" class="case rowD col7" />
+                            <engine:Button text="0" name="D8" selectable="true" class="case rowD col8" />
+                            <engine:Button text="0" name="D9" selectable="true" class="case rowD col9" />
+                        </engine:GroupBox>
+                        <engine:GroupBox name="RowE-789" class="row">
+                            <engine:Button text="0" name="E7" selectable="true" class="case rowE col7" />
+                            <engine:Button text="0" name="E8" selectable="true" class="case rowE col8" />
+                            <engine:Button text="0" name="E9" selectable="true" class="case rowE col9" />
+                        </engine:GroupBox>
+                        <engine:GroupBox name="RowF-789" class="row">
+                            <engine:Button text="0" name="F7" selectable="true" class="case rowF col7" />
+                            <engine:Button text="0" name="F8" enable-rich-text="true" selectable="true" class="case rowF col8" />
+                            <engine:Button text="0" name="F9" selectable="true" class="case rowF col9" />
+                        </engine:GroupBox>
+                    </engine:GroupBox>
+                </engine:GroupBox>
+                <engine:GroupBox name="Row3" focusable="true" class="row">
+                    <engine:GroupBox name="Box7" class="box">
+                        <engine:GroupBox name="RowG-123" class="row">
+                            <engine:Button text="0" name="G1" selectable="true" class="case rowG col1" />
+                            <engine:Button text="0" name="G2" selectable="true" class="case rowG col2" />
+                            <engine:Button text="0" name="G3" selectable="true" class="case rowG col3" />
+                        </engine:GroupBox>
+                        <engine:GroupBox name="RowH-123" class="row">
+                            <engine:Button text="0" name="H1" selectable="true" class="case rowH col1" />
+                            <engine:Button text="0" name="H2" selectable="true" class="case rowH col2" />
+                            <engine:Button text="0" name="H3" selectable="true" class="case rowH col3" />
+                        </engine:GroupBox>
+                        <engine:GroupBox name="RowI-123" class="row">
+                            <engine:Button text="0" name="I1" selectable="true" class="case rowI col1" />
+                            <engine:Button text="0" name="I2" enable-rich-text="true" selectable="true" class="case rowI col2" />
+                            <engine:Button text="0" name="I3" selectable="true" class="case rowI col3" />
+                        </engine:GroupBox>
+                    </engine:GroupBox>
+                    <engine:GroupBox name="Box8" class="box">
+                        <engine:GroupBox name="RowG-456" class="row">
+                            <engine:Button text="0" name="G4" selectable="true" class="case rowG col4" />
+                            <engine:Button text="0" name="G5" selectable="true" class="case rowG col5" />
+                            <engine:Button text="0" name="G6" selectable="true" class="case rowG col6" />
+                        </engine:GroupBox>
+                        <engine:GroupBox name="RowH-456" class="row">
+                            <engine:Button text="0" name="H4" selectable="true" class="case rowH col4" />
+                            <engine:Button text="0" name="H5" selectable="true" class="case rowH col5" />
+                            <engine:Button text="0" name="H6" selectable="true" class="case rowH col6" />
+                        </engine:GroupBox>
+                        <engine:GroupBox name="RowI-456" class="row">
+                            <engine:Button text="0" name="I4" selectable="true" class="case rowI col4" />
+                            <engine:Button text="0" name="I5" enable-rich-text="true" selectable="true" class="case rowI col5" />
+                            <engine:Button text="0" name="I6" selectable="true" class="case rowI col6" />
+                        </engine:GroupBox>
+                    </engine:GroupBox>
+                    <engine:GroupBox name="Box9" class="box">
+                        <engine:GroupBox name="RowG-789" class="row">
+                            <engine:Button text="0" name="G7" selectable="true" class="case rowG col7" />
+                            <engine:Button text="0" name="G8" selectable="true" class="case rowG col8" />
+                            <engine:Button text="0" name="G9" selectable="true" class="case rowG col9" />
+                        </engine:GroupBox>
+                        <engine:GroupBox name="RowH-789" class="row">
+                            <engine:Button text="0" name="H7" selectable="true" class="case rowH col7" />
+                            <engine:Button text="0" name="H8" selectable="true" class="case rowH col8" />
+                            <engine:Button text="0" name="H9" selectable="true" class="case rowH col9" />
+                        </engine:GroupBox>
+                        <engine:GroupBox name="RowI-789" class="row">
+                            <engine:Button text="0" name="I7" selectable="true" class="case rowI col7" />
+                            <engine:Button text="0" name="I8" enable-rich-text="true" selectable="true" class="case rowI col8" />
+                            <engine:Button text="0" name="I9" selectable="true" class="case rowI col9" />
+                        </engine:GroupBox>
+                    </engine:GroupBox>
+                </engine:GroupBox>
+            </engine:VisualElement>
+        </engine:VisualElement>
+        <engine:VisualElement name="Footer" style="flex-grow: 1; align-items: center; justify-content: flex-start; align-self: auto; align-content: center; height: 25%; max-height: 25%; min-height: 25%;">
+            <engine:GroupBox name="Buttons" style="flex-direction: row; margin-top: 0; margin-right: 0; margin-bottom: 0; margin-left: 0; padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 0; justify-content: space-evenly; width: 90%; align-self: center; align-content: center; align-items: center; height: 100px; opacity: 0.75;">
+                <engine:GroupBox name="Revert" class="button" style="opacity: 0.75;">
+                    <engine:VisualElement style="background-image: url(&quot;project://database/Assets/Medias/Icons/revert.svg?fileID=6192944022281365145&amp;guid=ae47e7cf5ddc3497c99994161a939db5&amp;type=3#revert&quot;); width: 60px;" />
+                    <engine:Label text="Revert" />
+                </engine:GroupBox>
+                <engine:GroupBox name="Erase" class="button" style="opacity: 0.75;">
+                    <engine:VisualElement style="background-image: url(&quot;project://database/Assets/Medias/Icons/erase.svg?fileID=6192944022281365145&amp;guid=a5f6e49e6824e4c5ca369dc7019e76e6&amp;type=3#erase&quot;); width: 75px;" />
+                    <engine:Label text="Erase" />
+                </engine:GroupBox>
+                <engine:GroupBox name="Notes" class="button" style="opacity: 0.75;">
+                    <engine:VisualElement style="background-image: url(&quot;project://database/Assets/Medias/Icons/notes.svg?fileID=6192944022281365145&amp;guid=e5d160b5b356846039f03a913a2fa353&amp;type=3#notes&quot;); width: 75px;" />
+                    <engine:Label text="Notes" />
+                </engine:GroupBox>
+                <engine:GroupBox name="Hint" class="button" style="opacity: 0.75;">
+                    <engine:VisualElement style="background-image: url(&quot;project://database/Assets/Medias/Icons/hint.svg?fileID=6192944022281365145&amp;guid=1b24cf56f25084e558926e841156091e&amp;type=3#hint&quot;); width: 50px;" />
+                    <engine:Label text="Hint" />
+                </engine:GroupBox>
+            </engine:GroupBox>
+            <engine:GroupBox name="Numbers" style="flex-direction: row; padding-top: 2%; padding-right: 2%; padding-bottom: 2%; padding-left: 2%; margin-top: 0; margin-right: 0; margin-bottom: 0; margin-left: 0; width: 100%; justify-content: space-evenly;">
+                <engine:Button text="1" name="1" selectable="true" class="number" />
+                <engine:Button text="2" name="2" selectable="true" class="number" />
+                <engine:Button text="3" name="3" selectable="true" class="number" />
+                <engine:Button text="4" name="4" selectable="true" class="number" />
+                <engine:Button text="5" name="5" selectable="true" class="number" />
+                <engine:Button text="6" name="6" selectable="true" class="number" />
+                <engine:Button text="7" name="7" selectable="true" class="number" />
+                <engine:Button text="8" name="8" selectable="true" class="number" />
+                <engine:Button text="9" name="9" selectable="true" class="number" />
+            </engine:GroupBox>
+        </engine:VisualElement>
+    </engine:VisualElement>
+</engine:UXML>
