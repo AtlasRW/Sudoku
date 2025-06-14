@@ -1,7 +1,9 @@
-# LOL
+# SIMPLE SUDOKU
 
-## LOL
+Made in Unity with UI Toolkit
 
-### LOL
+## Roadmap
 
-LOL
+-   Add more JUICE
+-   Experiment with ECS
+-   Optimization
