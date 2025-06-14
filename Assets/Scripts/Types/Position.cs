@@ -2,14 +2,23 @@ public readonly struct Position
 {
     public readonly Row row;
     public readonly Column column;
+    public readonly Box box;
     Position(Row r, Column c)
     {
         row = r;
         column = c;
+        box = Box.Get(r, c);
+    }
+    Position(Row r, Column c, Box b)
+    {
+        row = r;
+        column = c;
+        box = b;
     }
 
     public static Position Get(Row r, Column c) => new(r, c);
     public static Position Get(int r, int c) => new(Row.Get(r), Column.Get(c));
+    public static Position Get(int r, int c, int b) => new(Row.Get(r), Column.Get(c), Box.Get(b));
 
     public static bool operator ==(Position a, Position b) => a.Equals(b);
     public static bool operator !=(Position a, Position b) => !a.Equals(b);

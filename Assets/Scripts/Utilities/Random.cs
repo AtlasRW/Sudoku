@@ -7,5 +7,6 @@ public static class Random
     public static bool Bool() => Int(0, 1) == 0;
     public static Number Num() => Number.Get(Int(1, 9));
     public static int Int(int min, int max) => Range(min, max + 1);
+    public static int ListIndex<T>(List<T> list) => list.Count > 0 ? Range(0, list.Count) : default;
     public static T ListElement<T>(List<T> list) => list.Count > 0 ? list[Range(0, list.Count)] : default;
 }

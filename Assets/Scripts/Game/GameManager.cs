@@ -1,6 +1,6 @@
 using UnityEngine;
-using UnityEngine.UIElements;
 using UnityEngine.SceneManagement;
+using UnityEngine.UIElements;
 
 public class Game : BaseManager
 {
@@ -18,12 +18,12 @@ public class Game : BaseManager
 
     protected override void OnDisable()
     {
-        RemoveComponent<GameEvents>();
-        DestroyBoard();
-
         GameEvents.Solved.Unsubscribe(OnSolved);
         GameEvents.Back.Click.Unsubscribe(OnBack);
         GameEvents.Refresh.Click.Unsubscribe(OnRefresh);
+
+        RemoveComponent<GameEvents>();
+        DestroyBoard();
     }
 
     void OnSolved(Board b)

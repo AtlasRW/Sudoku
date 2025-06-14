@@ -5,7 +5,7 @@ public class ColumnTests
 {
     public record Target(Column Col, int Index, string ToStringResult, string ToClassNameResult);
 
-    static readonly Target[] T = {
+    static readonly Target[] Targets = {
         new(Column.A, 1, "1", "col1"),
         new(Column.B, 2, "2", "col2"),
         new(Column.C, 3, "3", "col3"),
@@ -18,7 +18,7 @@ public class ColumnTests
     };
 
     [OneTimeSetUp]
-    public void Init() => Assert.AreEqual(T.Length, 9);
+    public void Init() => Assert.AreEqual(Targets.Length, 9);
 
     [Test]
     public void Creations([Range(1, 9)] int i)
@@ -33,14 +33,14 @@ public class ColumnTests
     }
 
     [Test]
-    public void TypesCheck([ValueSource("T")] Target t)
+    public void TypesCheck([ValueSource(nameof(Targets))] Target t)
     {
         Assert.IsNotNull(t.Col);
         Assert.AreEqual($"{t.Col.GetType()}", "Column");
     }
 
     [Test]
-    public void Comparisons([ValueSource("T")] Target t, [Range(1, 9)] int i)
+    public void Comparisons([ValueSource(nameof(Targets))] Target t, [Range(1, 9)] int i)
     {
         if (t.Index == i)
             Assert.AreEqual(t.Col, Column.Get(i));
@@ -49,7 +49,7 @@ public class ColumnTests
     }
 
     [Test]
-    public void ConversionsString([ValueSource("T")] Target t, [Values("1", "2", "3", "4", "5", "6", "7", "8", "9")] string i)
+    public void ConversionsString([ValueSource(nameof(Targets))] Target t, [Values("1", "2", "3", "4", "5", "6", "7", "8", "9")] string i)
     {
         if (t.ToStringResult == i)
             Assert.AreEqual(t.Col.ToString(), i);
@@ -58,7 +58,7 @@ public class ColumnTests
     }
 
     [Test]
-    public void ConversionsClassName([ValueSource("T")] Target t, [Values("col1", "col2", "col3", "col4", "col5", "col6", "col7", "col8", "col9")] string i)
+    public void ConversionsClassName([ValueSource(nameof(Targets))] Target t, [Values("col1", "col2", "col3", "col4", "col5", "col6", "col7", "col8", "col9")] string i)
     {
         if (t.ToClassNameResult == i)
             Assert.AreEqual(t.Col.ToClassName(), i);

@@ -1,16 +1,21 @@
 using UnityEngine.UIElements;
 
-public class Cell : BaseInstance<Button, Position, Number, bool>
+public class Cell : BaseInstance
 {
     public Position Position;
     public State State = State.EMPTY;
     public Number? CurrentNumber = null;
     public Number ExpectedNumber;
-    Button Element;
+    private Button Element;
 
-    public static Cell Create(Button element, Position pos, Number num, bool isPrefilled) => Create<Cell>(element, pos, num, isPrefilled);
+    public static Cell Create(Button element, Position pos, Number num, bool isPrefilled = false)
+    {
+        Cell cell = NewInstance<Cell>();
+        cell.OnCreate(element, pos, num, isPrefilled);
+        return cell;
+    }
 
-    protected override void OnCreate(Button element, Position pos, Number num, bool isPrefilled = false)
+    protected void OnCreate(Button element, Position pos, Number num, bool isPrefilled)
     {
         Position = pos;
         Element = element;
@@ -85,8 +90,6 @@ public class Cell : BaseInstance<Button, Position, Number, bool>
         SetState(State.EMPTY);
         CurrentNumber = null;
         Element.text = "0";
-
-        GameEvents.Check.Publish();
     }
 
     public void RevealNumber()
@@ -130,5 +133,5 @@ public class Cell : BaseInstance<Button, Position, Number, bool>
     }
 
     public bool IsRight() => State.IsRight() && CurrentNumber == ExpectedNumber;
-    public bool IsWrong() => State.IsWrong() && CurrentNumber != ExpectedNumber;
+    public bool IsWrong() => State.IsWrong() || CurrentNumber != ExpectedNumber;
 }

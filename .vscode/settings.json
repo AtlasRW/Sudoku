@@ -1,6 +1,17 @@
 {
-    "dotnet.defaultSolution": "Sudoku.sln",
     "files.exclude": {
+        // PROJECT
+        "UIElementsSchema/": true,
+        "**/*.csproj*": true,
+        "**/*.sln*": true,
+        "**/*.inputactions": true,
+        "**/*.conf": true,
+        "Assets/Adaptive Performance/": true,
+        "Assets/**/_.asmdef": true,
+        "Assets/Tests/**/*.asmdef": true,
+        "Assets/Scenes/": true,
+        "Assets/Settings/": true,
+        // DEFAULT
         "**/.DS_Store": true,
         "**/.git": true,
         "**/.vs": true,
@@ -12,8 +23,6 @@
         "**/*.user": true,
         "**/*.userprefs": true,
         "**/*.unityproj": true,
-        "**/*.csproj*": true,
-        "**/*.sln*": true,
         "**/*.dll": true,
         "**/*.exe": true,
         "**/*.pdf": true,
@@ -46,8 +55,6 @@
         "**/*.meta": true,
         "**/*.prefab": true,
         "**/*.unity": true,
-        "**/*.inputactions": true,
-        "**/*.conf": true,
         "build/": true,
         "Build/": true,
         "Library/": true,
@@ -56,15 +63,10 @@
         "Obj/": true,
         "Logs/": true,
         "logs/": true,
-        "Assets/Adaptive Performance/": true,
-        "Assets/**/_.asmdef": true,
-        "Assets/Tests/**/*.asmdef": true,
-        "Assets/Scenes/": true,
-        "Assets/Settings/": true,
         "ProjectSettings/": true,
         "UserSettings/": true,
-        "UIElementsSchema/": true,
         "temp/": true,
         "Temp/": true
     },
+    "dotnet.defaultSolution": "Sudoku.sln"
 }

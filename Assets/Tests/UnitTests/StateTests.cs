@@ -4,7 +4,7 @@ public class StateTests
 {
     public record Target(State State, State.EState Index);
 
-    static readonly Target[] T = {
+    static readonly Target[] Targets = {
         new(State.EMPTY, State.EState.EMPTY),
         new(State.PREFILLED, State.EState.PREFILLED),
         new(State.FILLED, State.EState.FILLED),
@@ -12,7 +12,7 @@ public class StateTests
     };
 
     [OneTimeSetUp]
-    public void Init() => Assert.AreEqual(T.Length, 4);
+    public void Init() => Assert.AreEqual(Targets.Length, 4);
 
     [Test]
     public void Creations([Values] State.EState i)
@@ -21,14 +21,14 @@ public class StateTests
     }
 
     [Test]
-    public void TypesCheck([ValueSource("T")] Target t)
+    public void TypesCheck([ValueSource(nameof(Targets))] Target t)
     {
         Assert.IsNotNull(t.State);
         Assert.AreEqual($"{t.State.GetType()}", "State");
     }
 
     [Test]
-    public void Comparisons([ValueSource("T")] Target t, [Values] State.EState i)
+    public void Comparisons([ValueSource(nameof(Targets))] Target t, [Values] State.EState i)
     {
         if (t.Index == i)
             Assert.AreEqual(t.State, State.Get(i));

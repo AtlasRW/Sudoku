@@ -5,7 +5,7 @@ public class NumberTests
 {
     public record Target(Number Num, int Index, int ToIntResult, string ToStringResult);
 
-    static readonly Target[] T = {
+    static readonly Target[] Targets = {
         new(Number.ONE, 1, 1, "1"),
         new(Number.TWO, 2, 2, "2"),
         new(Number.THREE, 3, 3, "3"),
@@ -18,7 +18,7 @@ public class NumberTests
     };
 
     [OneTimeSetUp]
-    public void Init() => Assert.AreEqual(T.Length, 9);
+    public void Init() => Assert.AreEqual(Targets.Length, 9);
 
     [Test]
     public void Creations([Range(1, 9)] int i)
@@ -33,14 +33,14 @@ public class NumberTests
     }
 
     [Test]
-    public void TypesCheck([ValueSource("T")] Target t)
+    public void TypesCheck([ValueSource(nameof(Targets))] Target t)
     {
         Assert.IsNotNull(t.Num);
         Assert.AreEqual($"{t.Num.GetType()}", "Number");
     }
 
     [Test]
-    public void Comparisons([ValueSource("T")] Target t, [Range(1, 9)] int i)
+    public void Comparisons([ValueSource(nameof(Targets))] Target t, [Range(1, 9)] int i)
     {
         if (t.Index == i)
             Assert.AreEqual(t.Num, Number.Get(i));
@@ -49,7 +49,7 @@ public class NumberTests
     }
 
     [Test]
-    public void ConversionsInteger([ValueSource("T")] Target t, [Range(1, 9)] int i)
+    public void ConversionsInteger([ValueSource(nameof(Targets))] Target t, [Range(1, 9)] int i)
     {
         if (t.ToIntResult == i)
             Assert.AreEqual(t.Num.ToInt(), i);
@@ -58,7 +58,7 @@ public class NumberTests
     }
 
     [Test]
-    public void ConversionsString([ValueSource("T")] Target t, [Values("1", "2", "3", "4", "5", "6", "7", "8", "9")] string i)
+    public void ConversionsString([ValueSource(nameof(Targets))] Target t, [Values("1", "2", "3", "4", "5", "6", "7", "8", "9")] string i)
     {
         if (t.ToStringResult == i)
             Assert.AreEqual(t.Num.ToString(), i);

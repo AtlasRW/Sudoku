@@ -5,7 +5,7 @@ public class RowTests
 {
     public record Target(Row Row, int Index, string ToStringResult, string ToClassNameResult);
 
-    static readonly Target[] T = {
+    static readonly Target[] Targets = {
         new(Row.A, 1, "A", "rowA"),
         new(Row.B, 2, "B", "rowB"),
         new(Row.C, 3, "C", "rowC"),
@@ -18,7 +18,7 @@ public class RowTests
     };
 
     [OneTimeSetUp]
-    public void Init() => Assert.AreEqual(T.Length, 9);
+    public void Init() => Assert.AreEqual(Targets.Length, 9);
 
     [Test]
     public void Creations([Range(1, 9)] int i)
@@ -33,14 +33,14 @@ public class RowTests
     }
 
     [Test]
-    public void TypesCheck([ValueSource("T")] Target t)
+    public void TypesCheck([ValueSource(nameof(Targets))] Target t)
     {
         Assert.IsNotNull(t.Row);
         Assert.AreEqual($"{t.Row.GetType()}", "Row");
     }
 
     [Test]
-    public void Comparisons([ValueSource("T")] Target t, [Range(1, 9)] int i)
+    public void Comparisons([ValueSource(nameof(Targets))] Target t, [Range(1, 9)] int i)
     {
         if (t.Index == i)
             Assert.AreEqual(t.Row, Row.Get(i));
@@ -49,7 +49,7 @@ public class RowTests
     }
 
     [Test]
-    public void ConversionsString([ValueSource("T")] Target t, [Values("A", "B", "C", "D", "E", "F", "G", "H", "I")] string i)
+    public void ConversionsString([ValueSource(nameof(Targets))] Target t, [Values("A", "B", "C", "D", "E", "F", "G", "H", "I")] string i)
     {
         if (t.ToStringResult == i)
             Assert.AreEqual(t.Row.ToString(), i);
@@ -58,7 +58,7 @@ public class RowTests
     }
 
     [Test]
-    public void ConversionsClassName([ValueSource("T")] Target t, [Values("rowA", "rowB", "rowC", "rowD", "rowE", "rowF", "rowG", "rowH", "rowI")] string i)
+    public void ConversionsClassName([ValueSource(nameof(Targets))] Target t, [Values("rowA", "rowB", "rowC", "rowD", "rowE", "rowF", "rowG", "rowH", "rowI")] string i)
     {
         if (t.ToClassNameResult == i)
             Assert.AreEqual(t.Row.ToClassName(), i);

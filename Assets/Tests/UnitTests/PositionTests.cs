@@ -5,7 +5,7 @@ public class PositionTests
 {
     public record Target(Position Pos, int RowIndex, int ColIndex, string ToStringResult);
 
-    static readonly Target[] T = {
+    static readonly Target[] Targets = {
         new(Position.Get(Row.A, Column.A), 1, 1, "A1"),
         new(Position.Get(Row.A, Column.B), 1, 2, "A2"),
         new(Position.Get(Row.A, Column.C), 1, 3, "A3"),
@@ -103,14 +103,14 @@ public class PositionTests
     }
 
     [Test]
-    public void TypesCheck([ValueSource("T")] Target t)
+    public void TypesCheck([ValueSource(nameof(Targets))] Target t)
     {
         Assert.IsNotNull(t.Pos);
         Assert.AreEqual($"{t.Pos.GetType()}", "Position");
     }
 
     [Test, Pairwise]
-    public void Comparisons([ValueSource("T")] Target t, [Range(1, 9)] int i, [Range(1, 9)] int j)
+    public void Comparisons([ValueSource(nameof(Targets))] Target t, [Range(1, 9)] int i, [Range(1, 9)] int j)
     {
         if (t.RowIndex == i && t.ColIndex == j)
             Assert.AreEqual(t.Pos, Position.Get(i, j));
@@ -119,7 +119,7 @@ public class PositionTests
     }
 
     [Test, Pairwise]
-    public void ConversionsString([ValueSource("T")] Target t, [Range(1, 9)] int i, [Range(1, 9)] int j)
+    public void ConversionsString([ValueSource(nameof(Targets))] Target t, [Range(1, 9)] int i, [Range(1, 9)] int j)
     {
         string _str = $"{Row.Get(i)}{Column.Get(j)}";
 
