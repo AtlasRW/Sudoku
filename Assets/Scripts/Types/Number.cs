@@ -15,7 +15,8 @@ public readonly struct Number
     readonly int value;
     Number(int num) => value = num;
 
-    public static Number Get(int num) =>
+    public static implicit operator int(Number num) => num.value;
+    public static implicit operator Number(int num) =>
         num switch
         {
             1 => ONE,
@@ -30,11 +31,5 @@ public readonly struct Number
             _ => throw new NotImplementedException()
         };
 
-    public static bool operator ==(Number a, Number b) => a.Equals(b);
-    public static bool operator !=(Number a, Number b) => !a.Equals(b);
-    public readonly override int GetHashCode() => value.GetHashCode();
-    public readonly override bool Equals(object obj) => obj is Number num && value == num.value;
-
-    public readonly int ToInt() => value;
     public readonly override string ToString() => value.ToString();
 }

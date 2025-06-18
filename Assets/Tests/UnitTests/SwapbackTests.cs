@@ -2,16 +2,13 @@ using System.Collections.Generic;
 using System.Linq;
 using NUnit.Framework;
 
-public class SwapbackTests
+public class SwapbackTests : BaseTests
 {
     const int TARGET_SIZE = 99999;
     static List<int> Targets = new();
 
     [SetUp]
-    public void Init()
-    {
-        Targets = Enumerable.Range(1, TARGET_SIZE).ToList();
-    }
+    public void Init() => Targets = Enumerable.Range(1, TARGET_SIZE).ToList();
 
     [Test]
     public void RemoveAt()

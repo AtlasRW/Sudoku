@@ -1,7 +1,8 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
-public static class ListExtensions
+public static partial class Extensions
 {
     public static void Pop<T>(this List<T> list)
     {
@@ -24,4 +25,7 @@ public static class ListExtensions
         int index = list.FindIndex(predicate);
         RemoveBySwap(list, index);
     }
+
+    public static IEnumerable<(T item, int index)> WithIndex<T>(this IEnumerable<T> source) => source.Select((item, index) => (item, index));
+
 }

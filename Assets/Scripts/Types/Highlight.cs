@@ -1,41 +1,22 @@
 using System;
 
-public readonly struct Highlight
+public enum Highlight : byte
 {
-    public enum EHighlight
-    {
-        NONE,
-        ALIGNED,
-        MATCHED
-    }
+    NONE,
+    ALIGNED,
+    MATCHED
+}
 
-    public readonly static Highlight NONE = new(EHighlight.NONE);
-    public readonly static Highlight ALIGNED = new(EHighlight.ALIGNED);
-    public readonly static Highlight MATCHED = new(EHighlight.MATCHED);
-
-    readonly EHighlight value;
-    Highlight(EHighlight state) => value = state;
-
-    public static Highlight Get(EHighlight state) =>
-        state switch
+public static partial class Extensions
+{
+    public static string ToClass(this Highlight highlight) =>
+        highlight switch
         {
-            EHighlight.NONE => NONE,
-            EHighlight.ALIGNED => ALIGNED,
-            EHighlight.MATCHED => MATCHED,
+            Highlight.NONE => null,
+            Highlight.ALIGNED => "aligned",
+            Highlight.MATCHED => "matched",
             _ => throw new NotImplementedException()
         };
 
-    public static bool operator ==(Highlight a, Highlight b) => a.Equals(b);
-    public static bool operator !=(Highlight a, Highlight b) => !a.Equals(b);
-    public readonly override int GetHashCode() => value.GetHashCode();
-    public readonly override bool Equals(object obj) => obj is Highlight highlight && value == highlight.value;
-
-    public readonly string ToClassName() =>
-        value switch
-        {
-            EHighlight.NONE => null,
-            EHighlight.ALIGNED => "aligned",
-            EHighlight.MATCHED => "matched",
-            _ => throw new NotImplementedException()
-        };
+    public static bool IsHighlighted(this Highlight highlight) => highlight == Highlight.ALIGNED || highlight == Highlight.MATCHED;
 }

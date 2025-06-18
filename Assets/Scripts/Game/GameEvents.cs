@@ -4,7 +4,7 @@ public class GameEvents : BaseComponent
 {
     public static BaseEvent Check;
     public static BaseEvent<Board> Solved;
-    public static BaseEvent<Cell> CellSelect;
+    public static BaseEvent<CellInstance> CellSelect;
     public static BaseEvent<Action> NewAction;
     public static BaseEvent<Number> NewNumber;
     public static BaseInput<Button> Back;

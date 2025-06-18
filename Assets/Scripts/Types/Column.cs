@@ -15,7 +15,8 @@ public readonly struct Column
     readonly int value;
     Column(int col) => value = col;
 
-    public static Column Get(int col) =>
+    public static implicit operator int(Column col) => col.value;
+    public static implicit operator Column(int col) =>
         col switch
         {
             1 => A,
@@ -30,12 +31,6 @@ public readonly struct Column
             _ => throw new NotImplementedException()
         };
 
-    public static bool operator ==(Column a, Column b) => a.Equals(b);
-    public static bool operator !=(Column a, Column b) => !a.Equals(b);
-    public readonly override int GetHashCode() => value.GetHashCode();
-    public readonly override bool Equals(object obj) => obj is Column col && value == col.value;
-
-    public readonly int ToInt() => value;
     public readonly override string ToString() => value.ToString();
-    public readonly string ToClassName() => $"col{ToString()}";
+    public readonly string ToClass() => $"col{ToString()}";
 }

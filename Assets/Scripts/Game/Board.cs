@@ -6,8 +6,8 @@ using UnityEngine.UIElements;
 public class Board : BaseInstance
 {
     CellGrid Grid;
-    Cell SelectedCell = null;
-    List<Cell> HighlightedCells = new();
+    CellInstance SelectedCell = null;
+    List<CellInstance> HighlightedCells = new();
     readonly List<Action> Actions = new();
 
     public static Board Create()
@@ -60,7 +60,7 @@ public class Board : BaseInstance
         }
     }
 
-    void OnCellSelect(Cell cell)
+    void OnCellSelect(CellInstance cell)
     {
         if (SelectedCell) SelectedCell.Unfocus();
         SelectedCell = cell;
@@ -78,10 +78,11 @@ public class Board : BaseInstance
         if (Actions.Count > 0)
         {
             Action action = Actions.Last();
-            Cell cell = Grid.FindCell(action.cell.Position);
 
-            if (action.from is Number num) cell.UpdateNumber(num);
-            else cell.EraseNumber();
+            if (action.from is Number num)
+                action.cell.UpdateNumber(num);
+            else
+                action.cell.EraseNumber();
 
             Actions.RemoveAt(Actions.Count - 1);
             GameEvents.CellSelect.Publish(SelectedCell);
@@ -104,7 +105,7 @@ public class Board : BaseInstance
 
     void OnHint(ClickEvent e)
     {
-        Cell cell = Random.ListElement(Grid.FindWrongCells());
+        CellInstance cell = Random.ListElement(Grid.FindCells(cell => !cell.State.IsValid()));
         if (cell)
         {
             cell.TryRevealNumber();
@@ -120,18 +121,23 @@ public class Board : BaseInstance
 
     void SetHighlights()
     {
-        List<Cell> alignedCells = Grid.FindCells(SelectedCell.Position);
-        List<Cell> matchedCells = Grid.FindMatchedCells(SelectedCell.CurrentNumber);
+        // List<Cell> alignedCells = Grid.FindCells(SelectedCell.Position);
+        // List<Cell> matchedCells = Grid.FindMatchedCells(SelectedCell.CurrentNumber);
 
-        foreach (Cell cell in alignedCells) cell.SetHighlight(Highlight.ALIGNED);
-        foreach (Cell cell in matchedCells) cell.SetHighlight(Highlight.MATCHED);
+        // foreach (Cell cell in alignedCells) cell.SetHighlight(Highlight.ALIGNED);
+        // foreach (Cell cell in matchedCells) cell.SetHighlight(Highlight.MATCHED);
 
-        HighlightedCells = alignedCells.Concat(matchedCells).ToList();
+        // HighlightedCells = alignedCells.Concat(matchedCells).ToList();
+
+        HighlightedCells = Grid.FindCells(cell => cell.Cell.Highlights(SelectedCell.Cell));
+
+        foreach (CellInstance cell in HighlightedCells)
+            cell.SetHighlight(Highlight.ALIGNED);
     }
 
     void UnsetHighlights()
     {
-        foreach (Cell cell in HighlightedCells) cell.SetHighlight(Highlight.NONE);
+        foreach (CellInstance cell in HighlightedCells) cell.SetHighlight(Highlight.NONE);
         HighlightedCells = new();
     }
 }
