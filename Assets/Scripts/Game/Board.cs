@@ -105,7 +105,7 @@ public class Board : BaseInstance
 
     void OnHint(ClickEvent e)
     {
-        CellInstance cell = Random.ListElement(Grid.FindCells(cell => !cell.State.IsValid()));
+        CellInstance cell = Random.ListElement(Grid.FindCells(cell => !cell.Cell.State.IsValid()));
         if (cell)
         {
             cell.TryRevealNumber();
@@ -121,18 +121,13 @@ public class Board : BaseInstance
 
     void SetHighlights()
     {
-        // List<Cell> alignedCells = Grid.FindCells(SelectedCell.Position);
-        // List<Cell> matchedCells = Grid.FindMatchedCells(SelectedCell.CurrentNumber);
+        List<CellInstance> alignedCells = Grid.FindCells(cell => cell.Cell.Aligns(SelectedCell.Cell.Position));
+        List<CellInstance> matchedCells = Grid.FindCells(cell => cell.Cell.MatchesCurrent(SelectedCell.Cell.CurrentValue));
 
-        // foreach (Cell cell in alignedCells) cell.SetHighlight(Highlight.ALIGNED);
-        // foreach (Cell cell in matchedCells) cell.SetHighlight(Highlight.MATCHED);
+        foreach (CellInstance cell in alignedCells) cell.SetHighlight(Highlight.ALIGNED);
+        foreach (CellInstance cell in matchedCells) cell.SetHighlight(Highlight.MATCHED);
 
-        // HighlightedCells = alignedCells.Concat(matchedCells).ToList();
-
-        HighlightedCells = Grid.FindCells(cell => cell.Cell.Highlights(SelectedCell.Cell));
-
-        foreach (CellInstance cell in HighlightedCells)
-            cell.SetHighlight(Highlight.ALIGNED);
+        HighlightedCells = alignedCells.Concat(matchedCells).ToList();
     }
 
     void UnsetHighlights()

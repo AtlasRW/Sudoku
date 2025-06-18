@@ -62,7 +62,7 @@
     padding-bottom: 10px;
     padding-left: 18px;
     -unity-text-align: middle-center;
-    -unity-font-definition: url("project://database/Assets/Interfaces/UnityThemes/UnityDefaultRuntimeTheme.tss?fileID=2230732570650464555&guid=2522aac0bb3c94f818c55343f0feef50&type=3#NotInter-Regular");
+    -unity-font-definition: url("project://database/Assets/Medias/Fonts/Inter.ttf?fileID=12800000&guid=0cbfd0343efbf49f6992200d733e1540&type=3#Inter");
     -unity-font-style: normal;
     font-size: 400%;
     align-self: center;

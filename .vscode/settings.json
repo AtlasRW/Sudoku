@@ -2,6 +2,7 @@
     "files.exclude": {
         // PROJECT
         "UIElementsSchema/": true,
+        "Assets/UI Toolkit/": true,
         "**/*.csproj*": true,
         "**/*.sln*": true,
         "**/*.inputactions": true,

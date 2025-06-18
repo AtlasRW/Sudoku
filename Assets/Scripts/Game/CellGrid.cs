@@ -38,11 +38,8 @@ public class CellGrid : BaseInstance
 
     public CellInstance FindCell(Position pos) => FindCell(c => c.Cell.Aligns(pos));
     public CellInstance FindCell(Predicate<CellInstance> predicate) => cells.Find(predicate);
-
-    public List<CellInstance> FindRightCells() => FindCells(c => c.State.IsValid());
-    public List<CellInstance> FindWrongCells() => FindCells(c => !c.State.IsValid());
-
     public List<CellInstance> FindCells(Number num) => FindCells(c => c.Cell.Matches(num));
+    public List<CellInstance> FindCells(Number? num) => FindCells(c => c.Cell.MatchesCurrent(num));
     public List<CellInstance> FindCells(Position position) => FindCells(c => c.Cell.Aligns(position));
     public List<CellInstance> FindCells(Predicate<CellInstance> predicate) => cells.FindAll(predicate);
 

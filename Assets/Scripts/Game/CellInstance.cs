@@ -1,11 +1,10 @@
+using UnityEngine;
 using UnityEngine.UIElements;
 
 public class CellInstance : BaseInstance
 {
     public Cell Cell;
     private Button Element;
-    public State State = State.EMPTY;
-    public Number? CurrentValue = null;
 
     public static CellInstance Create(Cell cell, bool isPrefilled = false)
     {
@@ -29,8 +28,8 @@ public class CellInstance : BaseInstance
 
     protected override void OnDestroy()
     {
-        UnsetHighlight();
-        UnsetState();
+        UnsetHighlights();
+        UnsetStates();
 
         Element.UnregisterCallback<ClickEvent>(OnClick);
     }
@@ -47,18 +46,18 @@ public class CellInstance : BaseInstance
 
     public void TryUpdateNumber(Number num)
     {
-        if (State.IsUpdatable() && CurrentValue != num)
+        if (Cell.State.IsUpdatable() && Cell.CurrentValue != num)
         {
-            GameEvents.NewAction.Publish(Action.Get(this, CurrentValue, num));
+            GameEvents.NewAction.Publish(Action.Get(this, Cell.CurrentValue, num));
             UpdateNumber(num);
         }
     }
 
     public void TryEraseNumber()
     {
-        if (State.IsErasable())
+        if (Cell.State.IsErasable())
         {
-            GameEvents.NewAction.Publish(Action.Get(this, CurrentValue, null));
+            GameEvents.NewAction.Publish(Action.Get(this, Cell.CurrentValue, null));
             EraseNumber();
         }
     }
@@ -86,7 +85,7 @@ public class CellInstance : BaseInstance
     public void EraseNumber()
     {
         SetState(State.EMPTY);
-        CurrentValue = null;
+        Cell.CurrentValue = null;
         Element.text = "0";
     }
 
@@ -100,11 +99,11 @@ public class CellInstance : BaseInstance
 
     public void SetHighlight(Highlight highlight)
     {
-        UnsetHighlight();
+        UnsetHighlights();
         Element.AddToClassList(className: highlight.ToClass());
     }
 
-    void UnsetHighlight()
+    void UnsetHighlights()
     {
         Element.RemoveFromClassList(className: Highlight.ALIGNED.ToClass());
         Element.RemoveFromClassList(className: Highlight.MATCHED.ToClass());
@@ -112,12 +111,12 @@ public class CellInstance : BaseInstance
 
     void SetState(State state)
     {
-        State = state;
-        UnsetState();
+        Cell.State = state;
+        UnsetStates();
         Element.AddToClassList(className: state.ToClass());
     }
 
-    void UnsetState()
+    void UnsetStates()
     {
         Element.RemoveFromClassList(className: State.PREFILLED.ToClass());
         Element.RemoveFromClassList(className: State.FILLED.ToClass());
@@ -126,9 +125,9 @@ public class CellInstance : BaseInstance
 
     void FillNumber(Number num)
     {
-        CurrentValue = num;
+        Cell.CurrentValue = num;
         Element.text = num.ToString();
     }
 
-    public bool IsValid() => State.IsValid() && CurrentValue == Cell.Value;
+    public bool IsValid() => Cell.State.IsValid() && Cell.CurrentValue == Cell.Value;
 }

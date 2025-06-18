@@ -7,6 +7,7 @@ public class GameEvents : BaseComponent
     public static BaseEvent<CellInstance> CellSelect;
     public static BaseEvent<Action> NewAction;
     public static BaseEvent<Number> NewNumber;
+
     public static BaseInput<Button> Back;
     public static BaseInput<Button> Refresh;
     public static BaseInput<GroupBox> Revert;
@@ -29,6 +30,7 @@ public class GameEvents : BaseComponent
         CellSelect = new();
         NewAction = new();
         NewNumber = new();
+
         Solved = new();
         Back = new(name: "Back");
         Refresh = new(name: "Refresh");

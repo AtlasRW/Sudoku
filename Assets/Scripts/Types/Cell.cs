@@ -20,5 +20,5 @@ public struct Cell
 
     public readonly bool Aligns(Position pos) => Position.Aligns(pos);
     public readonly bool Matches(Number? num) => num is Number && Value == num;
-    public readonly bool Highlights(Cell cell) => Aligns(cell.Position) || Matches(cell.CurrentValue);
+    public readonly bool MatchesCurrent(Number? num) => num is Number && CurrentValue == num;
 }

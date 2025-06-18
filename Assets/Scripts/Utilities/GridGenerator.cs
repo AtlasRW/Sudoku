@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.Linq;
+using Unity.Burst;
 
 public static class GridGenerator
 {
@@ -9,7 +10,6 @@ public static class GridGenerator
     {
         List<Cell> cells = new();
         List<List<int>> options = new();
-        List<bool> prefills = GetPrefills(difficulty);
 
         for (int i = 0; i < GRID_LENGTH; i++)
             options.Add(GetNumberOptions());
@@ -20,7 +20,7 @@ public static class GridGenerator
             if (options[c].Count > 0)
             {
                 int optionIndex = Random.ListIndex(options[c]);
-                Cell optionCell = new(c + 1, options[c][optionIndex], prefills[c]);
+                Cell optionCell = new(c + 1, options[c][optionIndex]);
 
                 options[c].RemoveBySwap(optionIndex);
 
@@ -51,9 +51,4 @@ public static class GridGenerator
     }
 
     private static List<int> GetNumberOptions() => new() { 1, 2, 3, 4, 5, 6, 7, 8, 9 };
-    private static List<bool> GetPrefills(Difficulty difficulty)
-    {
-        bool[] bools = new bool[81];
-        return new List<bool>();
-    }
 }
