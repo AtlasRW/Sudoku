@@ -1,5 +1,3 @@
-using System;
-
 public enum Highlight : byte
 {
     NONE,
@@ -15,7 +13,7 @@ public static partial class Extensions
             Highlight.NONE => null,
             Highlight.ALIGNED => "aligned",
             Highlight.MATCHED => "matched",
-            _ => throw new NotImplementedException()
+            _ => throw Error.Enum(highlight)
         };
 
     public static bool IsHighlighted(this Highlight highlight) => highlight == Highlight.ALIGNED || highlight == Highlight.MATCHED;

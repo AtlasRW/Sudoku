@@ -1,14 +1,18 @@
+using System;
+using UnityEngine;
+
+[Serializable]
 public struct Cell
 {
-    public readonly Position Position;
-    public readonly Number Value;
+    [SerializeField] public Position Position;
+    [SerializeField] public Number Value;
 
-    public Number? CurrentValue;
-    public State State;
+    [SerializeField] public Number? CurrentValue;
+    [SerializeField] public State State;
 
-    // private Button Element;
+    // Button Element;
 
-    public Cell(int position, int value, bool prefill = false)
+    public Cell(byte position, byte value, bool prefill = false)
     {
         Position = position;
         Value = value;
@@ -16,9 +20,17 @@ public struct Cell
         State = prefill ? State.PREFILLED : State.EMPTY;
     }
 
-    public readonly override string ToString() => Position.ToString();
+    public readonly override string ToString() => $"{Position}:{Value}:{CurrentValue?.ToString() ?? "X"}";
 
-    public readonly bool Aligns(Position pos) => Position.Aligns(pos);
-    public readonly bool Matches(Number? num) => num is Number && Value == num;
-    public readonly bool MatchesCurrent(Number? num) => num is Number && CurrentValue == num;
+    public static implicit operator CellInstance(Cell cell) => new(cell);
+    public static implicit operator Cell(CellInstance instance) => instance.Cell;
+
+    public readonly bool Aligns(Position? value) => value is Position pos && Position.Aligns(pos);
+    public readonly bool Matches(Number? value) => value is Number num && Value == num;
+    public readonly bool MatchesCurrent(Number? value) => value is Number num && CurrentValue == num;
+
+    public static bool operator ==(Cell a, Cell b) => a.Equals(b);
+    public static bool operator !=(Cell a, Cell b) => !a.Equals(b);
+    public readonly override bool Equals(object obj) => obj is Cell cell && Position == cell.Position;
+    public readonly override int GetHashCode() => (Position, Value, CurrentValue, State).GetHashCode();
 }

@@ -1,26 +1,23 @@
 using System.Collections.Generic;
 using System.Linq;
-using Unity.Burst;
 
 public static class GridGenerator
 {
-    private const int GRID_LENGTH = 81;
+    const byte GRID_LENGTH = 81;
 
     public static List<Cell> Generate(Difficulty difficulty = Difficulty.MEDIUM)
     {
         List<Cell> cells = new();
-        List<List<int>> options = new();
+        List<List<byte>> options = GetOptions();
+        bool[] prefills = GetPrefills(difficulty);
 
-        for (int i = 0; i < GRID_LENGTH; i++)
-            options.Add(GetNumberOptions());
-
-        int c = 0;
+        byte c = 0;
         while (c != GRID_LENGTH)
         {
             if (options[c].Count > 0)
             {
-                int optionIndex = Random.ListIndex(options[c]);
-                Cell optionCell = new(c + 1, options[c][optionIndex]);
+                int optionIndex = Random.Index(options[c]);
+                Cell optionCell = new((byte)(c + 1), options[c][optionIndex], prefills[c]);
 
                 options[c].RemoveBySwap(optionIndex);
 
@@ -41,7 +38,7 @@ public static class GridGenerator
         return cells;
     }
 
-    private static bool IsCompatible(List<Cell> cells, Cell test)
+    static bool IsCompatible(List<Cell> cells, Cell test)
     {
         foreach (Cell cell in cells.Where(cell => cell.Aligns(test.Position)))
             if (cell.Matches(test.Value))
@@ -50,5 +47,25 @@ public static class GridGenerator
         return true;
     }
 
-    private static List<int> GetNumberOptions() => new() { 1, 2, 3, 4, 5, 6, 7, 8, 9 };
+    static List<byte> GetNumberOptions() => new() { 1, 2, 3, 4, 5, 6, 7, 8, 9 };
+
+    static List<List<byte>> GetOptions()
+    {
+        List<List<byte>> options = new();
+
+        for (byte i = 0; i < GRID_LENGTH; i++)
+            options.Add(GetNumberOptions());
+
+        return options;
+    }
+
+    static bool[] GetPrefills(Difficulty difficulty)
+    {
+        bool[] prefills = new bool[GRID_LENGTH];
+
+        for (byte i = 0; i < difficulty.ToPrefills(); i++)
+            prefills[i] = true;
+
+        return prefills.Shuffle();
+    }
 }

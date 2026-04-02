@@ -16,3 +16,6 @@ insert_final_newline = false
 # csharp_new_line_before_members_in_object_initializers = true
 # csharp_new_line_before_open_brace = all
 # csharp_new_line_between_query_expression_clauses = true
+
+# IDE0130: Namespace does not match folder structure
+dotnet_style_namespace_match_folder = true

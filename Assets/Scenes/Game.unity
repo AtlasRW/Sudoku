@@ -179,7 +179,7 @@ MonoBehaviour:
   m_DefaultControlScheme: Touch
   m_DefaultActionMap: UI
   m_SplitScreenIndex: -1
-  m_Camera: {fileID: 0}
+  m_Camera: {fileID: 1563415456}
 --- !u!114 &360279157
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -355,5 +355,5 @@ Transform:
 SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
-  - {fileID: 360279158}
   - {fileID: 1563415457}
+  - {fileID: 360279158}

@@ -1,8 +1,6 @@
 {
     "files.exclude": {
         // PROJECT
-        "UIElementsSchema/": true,
-        "Assets/UI Toolkit/": true,
         "**/*.csproj*": true,
         "**/*.sln*": true,
         "**/*.inputactions": true,
@@ -10,8 +8,13 @@
         "Assets/Adaptive Performance/": true,
         "Assets/**/_.asmdef": true,
         "Assets/Tests/**/*.asmdef": true,
+        "Assets/Resources/": true,
         "Assets/Scenes/": true,
         "Assets/Settings/": true,
+        "Assets/UI Toolkit/": true,
+        "Assets/AddressableAssetsData/": true,
+        "ProfilerCaptures/": true,
+        "UIElementsSchema/": true,
         // DEFAULT
         "**/.DS_Store": true,
         "**/.git": true,
@@ -69,5 +72,5 @@
         "temp/": true,
         "Temp/": true
     },
-    "dotnet.defaultSolution": "Sudoku.sln"
+    "dotnet.defaultSolution": "Sudoku.slnx"
 }

@@ -1,6 +1,3 @@
-using System;
-
-// public enum State
 public enum State : byte
 {
     EMPTY,
@@ -18,7 +15,7 @@ public static partial class Extensions
             State.PREFILLED => "prefilled",
             State.FILLED => "filled",
             State.ERROR => "error",
-            _ => throw new NotImplementedException()
+            _ => throw Error.Enum(state)
         };
 
     public static bool IsUpdatable(this State state) => state == State.EMPTY || state == State.ERROR || state == State.FILLED;

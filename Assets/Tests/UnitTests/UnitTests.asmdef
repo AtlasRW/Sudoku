@@ -1,7 +1,9 @@
 {
     "name": "UnitTests",
-    "rootNamespace": "",
+    "rootNamespace": "UnitTests",
     "references": [
+        "Unity.PerformanceTesting.Editor",
+        "Unity.PerformanceTesting",
         "UnityEngine.TestRunner",
         "UnityEditor.TestRunner",
         "_"

@@ -3,47 +3,40 @@ using System.Linq;
 using UnityEngine;
 using UnityEngine.UIElements;
 
-public class Board : BaseInstance
+public class Board : BaseComponent
 {
-    CellGrid Grid;
-    CellInstance SelectedCell = null;
-    List<CellInstance> HighlightedCells = new();
-    readonly List<Action> Actions = new();
+    [SerializeField] CellGrid Grid;
+    [SerializeField] CellInstance? SelectedCell;
+    [SerializeField] List<CellInstance> HighlightedCells = new();
+    [SerializeField] List<Action> Actions = new();
 
-    public static Board Create()
+    protected override void OnEnable()
     {
-        Board board = NewInstance<Board>();
-        board.OnCreate();
-        return board;
-    }
-
-    protected void OnCreate()
-    {
-        Grid = CellGrid.Create();
+        Grid = CellGridFactory.GenerateCellGrid();
 
         GameEvents.Check.Subscribe(OnCheck);
         GameEvents.NewNumber.Subscribe(OnNewNumber);
         GameEvents.NewAction.Subscribe(OnNewAction);
         GameEvents.CellSelect.Subscribe(OnCellSelect);
-        GameEvents.Revert.Click.Subscribe(OnRevert);
-        GameEvents.Erase.Click.Subscribe(OnErase);
-        GameEvents.Notes.Click.Subscribe(OnNotes);
-        GameEvents.Hint.Click.Subscribe(OnHint);
+        GameEvents.Revert.Subscribe(OnRevert);
+        GameEvents.Erase.Subscribe(OnErase);
+        GameEvents.Notes.Subscribe(OnNotes);
+        GameEvents.Hint.Subscribe(OnHint);
     }
 
-    protected override void OnDestroy()
+    protected override void OnDisable()
     {
-        if (SelectedCell) SelectedCell.Unfocus();
+        SelectedCell?.Unfocus();
         Grid.Destroy();
 
         GameEvents.Check.Unsubscribe(OnCheck);
         GameEvents.NewNumber.Unsubscribe(OnNewNumber);
         GameEvents.NewAction.Unsubscribe(OnNewAction);
         GameEvents.CellSelect.Unsubscribe(OnCellSelect);
-        GameEvents.Revert.Click.Unsubscribe(OnRevert);
-        GameEvents.Erase.Click.Unsubscribe(OnErase);
-        GameEvents.Notes.Click.Unsubscribe(OnNotes);
-        GameEvents.Hint.Click.Unsubscribe(OnHint);
+        GameEvents.Revert.Unsubscribe(OnRevert);
+        GameEvents.Erase.Unsubscribe(OnErase);
+        GameEvents.Notes.Unsubscribe(OnNotes);
+        GameEvents.Hint.Unsubscribe(OnHint);
     }
 
     void OnCheck()
@@ -55,16 +48,16 @@ public class Board : BaseInstance
     {
         if (SelectedCell)
         {
-            SelectedCell.TryUpdateNumber(num);
+            SelectedCell?.TryUpdateNumber(num);
             ResetHighlights();
         }
     }
 
-    void OnCellSelect(CellInstance cell)
+    void OnCellSelect(CellInstance? cell)
     {
-        if (SelectedCell) SelectedCell.Unfocus();
+        SelectedCell?.Unfocus();
         SelectedCell = cell;
-        SelectedCell.Focus();
+        SelectedCell?.Focus();
         ResetHighlights();
     }
 
@@ -93,19 +86,19 @@ public class Board : BaseInstance
     {
         if (SelectedCell)
         {
-            SelectedCell.TryEraseNumber();
+            SelectedCell?.TryEraseNumber();
             ResetHighlights();
         }
     }
 
     void OnNotes(ClickEvent e)
     {
-        Debug.Log("NOTES");
+        Logger.Log("NOTES");
     }
 
     void OnHint(ClickEvent e)
     {
-        CellInstance cell = Random.ListElement(Grid.FindCells(cell => !cell.Cell.State.IsValid()));
+        CellInstance cell = Random.Element(Grid.FindCells(cell => !cell.Cell.State.IsValid()));
         if (cell)
         {
             cell.TryRevealNumber();
@@ -121,8 +114,8 @@ public class Board : BaseInstance
 
     void SetHighlights()
     {
-        List<CellInstance> alignedCells = Grid.FindCells(cell => cell.Cell.Aligns(SelectedCell.Cell.Position));
-        List<CellInstance> matchedCells = Grid.FindCells(cell => cell.Cell.MatchesCurrent(SelectedCell.Cell.CurrentValue));
+        List<CellInstance> alignedCells = Grid.FindCells(cell => cell.Cell.Aligns(SelectedCell?.Cell.Position));
+        List<CellInstance> matchedCells = Grid.FindCells(cell => cell.Cell.MatchesCurrent(SelectedCell?.Cell.CurrentValue));
 
         foreach (CellInstance cell in alignedCells) cell.SetHighlight(Highlight.ALIGNED);
         foreach (CellInstance cell in matchedCells) cell.SetHighlight(Highlight.MATCHED);

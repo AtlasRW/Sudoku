@@ -12,7 +12,10 @@ EditorBuildSettings:
     path: Assets/Scenes/Game.unity
     guid: 8c9cfa26abfee488c85f1582747f6a02
   m_configObjects:
-    com.unity.adaptiveperformance.loader_settings: {fileID: 11400000, guid: 772d0c84bbdf5417f939322b86a240f4, type: 2}
-    com.unity.adaptiveperformance.simulator.provider_settings: {fileID: 11400000, guid: f182a0987346244ecb96c9da4b32e139, type: 2}
+    com.unity.adaptivePerformance.basic.provider_settings: {fileID: 11400000, guid: bf318f79219bd4eb4a6fac85e84e994e, type: 2}
+    com.unity.adaptiveperformance.google.android.provider_settings: {fileID: 11400000, guid: 55c4f640d79d946048c5d50402cf6201, type: 2}
+    com.unity.adaptiveperformance.loader_settings: {fileID: 11400000, guid: f8ea7d6936cb04a15a2f41d193fe48c2, type: 2}
+    com.unity.adaptiveperformance.simulator.provider_settings: {fileID: 11400000, guid: 49ff3306069284e4fa36482453e9469f, type: 2}
+    com.unity.addressableassets: {fileID: 11400000, guid: 68560637843674ca7adee7231138c924, type: 2}
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
-  m_UseUCBPForAssetBundles: 0
+    com.unity.localization.settings: {fileID: 11400000, guid: 87fec3a01c6774798ac4602770942b87, type: 2}
